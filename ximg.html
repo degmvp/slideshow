@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Slideshow</title>
+    <style>
+        body {
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #000;
+        }
+        img {
+            max-width: 600px; /* Ocupa toda a largura disponível */
+            max-height: auto; /* Ocupa toda a altura disponível */
+            }
+    </style>
+</head>
+<body>
+    <div id="slideshow-container">
+        <img id="slideshow" src="" alt="Slideshow Image">
+    </div>
+
+    <script>
+        // Lista de imagens no diretório zzz-x-img
+        const images = [
+            'zzz-x-img/img1.jpg',
+            'zzz-x-img/img2.jpg',
+            'zzz-x-img/img3.jpg',
+            'zzz-x-img/img4.jpg'
+            // Adicione mais imagens conforme necessário
+        ];
+
+        let currentIndex = 0;
+
+        function showNextImage() {
+            currentIndex = (currentIndex + 1) % images.length;
+            document.getElementById('slideshow').src = images[currentIndex];
+        }
+
+        function startSlideshow() {
+            if (images.length > 0) {
+                document.getElementById('slideshow').src = images[currentIndex];
+                setInterval(showNextImage, 3000); // Troca de imagem a cada 3 segundos
+            } else {
+                console.error('Nenhuma imagem encontrada.');
+            }
+        }
+
+        // Iniciar o slideshow
+        startSlideshow();
+    </script>
+</body>
+</html>
